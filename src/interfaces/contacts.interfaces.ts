@@ -2,7 +2,7 @@ import { ICustomerResponse } from "./customers.interfaces";
 
 interface IContactRequest {
   fullName: string;
-  phoneNumber: number;
+  phoneNumber: string;
   email: string;
   customerId: string;
 }
@@ -10,7 +10,7 @@ interface IContactRequest {
 interface IContactResponse {
   id: string;
   fullName: string;
-  phoneNumber: number;
+  phoneNumber: string;
   email: string;
   createdAt: Date;
   updatedAt: Date;
@@ -18,7 +18,7 @@ interface IContactResponse {
 
 interface IContactUpdate {
   fullName?: string;
-  phoneNumber?: number;
+  phoneNumber?: string;
   email?: string;
 }
 

@@ -21,7 +21,7 @@ class Contact {
   email: string;
 
   @Column()
-  phoneNumber: number;
+  phoneNumber: string;
 
   @DeleteDateColumn()
   deletedAt: Date;

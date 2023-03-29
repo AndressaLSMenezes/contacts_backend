@@ -13,7 +13,7 @@ const contactRequestSchema: Schema<IContactRequest> = yup.object().shape({
     .string()
     .email("Formato de email invalido")
     .required("Email é obrigatório"),
-  phoneNumber: yup.number().required("Telefone é obrigatório"),
+  phoneNumber: yup.string().required("Telefone é obrigatório"),
   customerId: yup.string().required("custumerId é obrigatório"),
 });
 
@@ -24,7 +24,7 @@ const contactSchema: Schema<IContactResponse> = yup.object().shape({
     .string()
     .email("Formato de email invalido")
     .required("Email é obrigatório"),
-  phoneNumber: yup.number().required("Telefone é obrigatório"),
+  phoneNumber: yup.string().required("Telefone é obrigatório"),
   createdAt: yup.date().required(),
   updatedAt: yup.date().required(),
   customerId: yup.string().required("custumerId é obrigatório"),
@@ -33,7 +33,7 @@ const contactSchema: Schema<IContactResponse> = yup.object().shape({
 const contactUpdateSchema: Schema<IContactUpdate> = yup.object().shape({
   fullName: yup.string(),
   email: yup.string().email("Formato de email invalido"),
-  phoneNumber: yup.number(),
+  phoneNumber: yup.string(),
 });
 
 export { contactRequestSchema, contactSchema, contactUpdateSchema };

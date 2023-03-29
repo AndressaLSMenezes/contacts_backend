@@ -1,19 +1,19 @@
 import AppDataSource from "../../data-source";
 import Customer from "../../models/customers.model";
 
-const deleteCustomerService = async (id: string): Promise<void> => {
-  const customerRepository = AppDataSource.getRepository(Customer);
-  try {
-    const customer = await customerRepository.findOne({
-      where: {
-        id: id,
-      },
-    });
+const deleteCustomerService = async (idCustomer: string) => {
+  console.log("ID CUstomer");
 
-    await customerRepository.softDelete(customer!);
-  } catch (error) {
-    console.error(error);
-  }
+  console.log(idCustomer);
+
+  const customerRepository = AppDataSource.getRepository(Customer);
+  const customer = (await customerRepository.findOne({
+    where: {
+      id: idCustomer,
+    },
+  })) as Customer;
+
+  return await customerRepository.softRemove({ id: idCustomer });
 };
 
 export { deleteCustomerService };
