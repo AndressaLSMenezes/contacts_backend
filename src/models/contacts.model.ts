@@ -23,12 +23,6 @@ class Contact {
   @Column()
   phoneNumber: number;
 
-  @Column()
-  isAdm: boolean;
-
-  @Column({ default: true })
-  isActive: boolean;
-
   @DeleteDateColumn()
   deletedAt: Date;
 
@@ -38,7 +32,7 @@ class Contact {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => Customer, (customer) => customer.id)
+  @ManyToOne(() => Customer, (customer) => customer.contacts)
   customer: Customer;
 }
 

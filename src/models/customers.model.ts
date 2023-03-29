@@ -17,17 +17,11 @@ class Customer {
   @Column()
   fullName: string;
 
-  @Column({ length: 50, unique: true })
+  @Column({ length: 50 })
   email: string;
 
   @Column()
   phoneNumber: number;
-
-  @Column({ default: false })
-  isAdm: boolean;
-
-  @Column({ default: true })
-  isActive: boolean;
 
   @DeleteDateColumn()
   deletedAt: Date;
@@ -39,7 +33,7 @@ class Customer {
   updatedAt: Date;
 
   @OneToMany(() => Contact, (contact) => contact.customer)
-  contact: Contact[];
+  contacts: Contact[];
 }
 
 export default Customer;
