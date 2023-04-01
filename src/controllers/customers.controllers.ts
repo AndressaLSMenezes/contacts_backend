@@ -37,7 +37,7 @@ const deleteCustomerController = async (
 ): Promise<Response> => {
   const { id } = req.params;
   await deleteCustomerService(id);
-  return res.status(204);
+  return res.status(204).send();
 };
 
 const updateCustomerController = async (

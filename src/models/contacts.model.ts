@@ -6,18 +6,18 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
-import Customer from "./customers.model";
+} from 'typeorm';
+import Customer from './customers.model';
 
-@Entity("contacts")
+@Entity('contacts')
 class Contact {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
   fullName: string;
 
-  @Column({ length: 50, unique: true })
+  @Column({ length: 50 })
   email: string;
 
   @Column()

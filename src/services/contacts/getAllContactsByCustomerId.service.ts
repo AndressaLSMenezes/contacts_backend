@@ -1,15 +1,16 @@
 import AppDataSource from '../../data-source';
-import { IContactResponse } from '../../interfaces/contacts.interfaces';
 import Contact from '../../models/contacts.model';
 
-const getAllContactsService = async (): Promise<IContactResponse[]> => {
+const getAllContactsByCustomerService = async (customerId: string) => {
   const contactRepository = AppDataSource.getRepository(Contact);
   const contacts = await contactRepository.find({
-    relations: {
-      customer: true,
+    where: {
+      customer: {
+        id: customerId,
+      },
     },
   });
 
   return contacts;
 };
-export { getAllContactsService };
+export { getAllContactsByCustomerService };

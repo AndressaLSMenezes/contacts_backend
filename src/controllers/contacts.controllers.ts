@@ -1,16 +1,17 @@
-import { Request, Response } from "express";
-import { createContactService } from "../services/contacts/createContact.service";
-import { deleteContactService } from "../services/contacts/deleteContact.service";
-import { getAllContactsService } from "../services/contacts/getAllContacts.service";
-import { getByIdContactService } from "../services/contacts/getByIdContact.service";
-import { updateContactService } from "../services/contacts/updateContact.service";
+import { Request, Response } from 'express';
+import { createContactService } from '../services/contacts/createContact.service';
+import { deleteContactService } from '../services/contacts/deleteContact.service';
+import { getAllContactsService } from '../services/contacts/getAllContacts.service';
+import { getByIdContactService } from '../services/contacts/getByIdContact.service';
+import { updateContactService } from '../services/contacts/updateContact.service';
+import { getAllContactsByCustomerService } from '../services/contacts/getAllContactsByCustomerId.service';
 
 const createContactController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
   const { body } = req;
-  const data = createContactService(body);
+  const data = await createContactService(body);
   return res.status(201).send(data);
 };
 
@@ -18,7 +19,16 @@ const getAllContactsController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const data = getAllContactsService();
+  const data = await getAllContactsService();
+  return res.status(200).send(data);
+};
+
+const getAllContactsByCustomerIdController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const {id} = req.params
+  const data = await getAllContactsByCustomerService(id);
   return res.status(200).send(data);
 };
 
@@ -27,7 +37,7 @@ const getByIdContactController = async (
   res: Response
 ): Promise<Response> => {
   const { id } = req.params;
-  const data = getByIdContactService(id);
+  const data = await getByIdContactService(id);
   return res.status(200).send(data);
 };
 
@@ -36,8 +46,8 @@ const deleteContactController = async (
   res: Response
 ): Promise<Response> => {
   const { id } = req.params;
-  const data = deleteContactService(id);
-  return res.status(200).send(data);
+  const data = await deleteContactService(id);
+  return res.status(200).send();
 };
 
 const updateContactController = async (
@@ -45,7 +55,7 @@ const updateContactController = async (
   res: Response
 ): Promise<Response> => {
   const { body, params } = req;
-  const data = updateContactService(body, params.id);
+  const data = await updateContactService(body, params.id);
   return res.status(200).send(data);
 };
 
@@ -55,4 +65,5 @@ export {
   getByIdContactController,
   deleteContactController,
   updateContactController,
+  getAllContactsByCustomerIdController
 };

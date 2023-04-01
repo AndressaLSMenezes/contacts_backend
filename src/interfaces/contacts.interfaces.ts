@@ -1,4 +1,4 @@
-import { ICustomerResponse } from "./customers.interfaces";
+import { ICustomerResponse } from './customers.interfaces';
 
 interface IContactRequest {
   fullName: string;
@@ -14,6 +14,7 @@ interface IContactResponse {
   email: string;
   createdAt: Date;
   updatedAt: Date;
+  customer: ICustomerResponse;
 }
 
 interface IContactUpdate {

@@ -12,7 +12,6 @@ interface ICustomerResponse {
   email: string;
   createdAt: Date;
   updatedAt: Date;
-  contacts: IContactResponse[];
 }
 
 interface ICustomerUpdate {

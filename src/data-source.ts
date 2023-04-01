@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { DataSource } from "typeorm";
 import path from "path";
+import Customer from "./models/customers.model";
+import Contact from "./models/contacts.model";
 
 
 const AppDataSource = new DataSource({
@@ -12,7 +14,7 @@ const AppDataSource = new DataSource({
   database: process.env.PGDATABASE,
   logging: true,
   synchronize: false,
-  entities: [path.join(__dirname, "./models/**.{js,ts}")],
+  entities: [Customer, Contact],
   migrations: [path.join(__dirname, "./migrations/**.{js,ts}")],
 });
 
