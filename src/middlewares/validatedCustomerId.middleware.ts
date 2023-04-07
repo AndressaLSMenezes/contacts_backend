@@ -11,10 +11,10 @@ const validatedCustomerIdMiddleware = async (
   try {
     const id = req.params.id || req.body.customerId;
     const customerRepository = AppDataSource.getRepository(Customer);
-    const customer = await customerRepository.findOneByOrFail({ id: id });
+    const customer = await customerRepository.findOneBy({ id: id });
 
     if (!customer) {
-      throw new AppError('Invalid ID');
+      throw new AppError('Customer not found', 404);
     }
 
     return next()

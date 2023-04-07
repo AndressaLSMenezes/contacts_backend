@@ -13,14 +13,11 @@ const createContactService = async (
   const { fullName, email, phoneNumber, customerId } = data;
   const customerRepository = AppDataSource.getRepository(Customer);
 
-  const customer = await customerRepository.findOne({
+  const customer = (await customerRepository.findOne({
     where: {
       id: customerId,
     },
-  });
-  if (!customer) {
-    throw new Error(`No customer found with ID: ${customerId}`);
-  }
+  })) as Customer;
 
   const contactRepository = AppDataSource.getRepository(Contact);
   const verifyEmailExists = await contactRepository.findOneBy({
@@ -30,7 +27,7 @@ const createContactService = async (
     },
   });
   if (verifyEmailExists) {
-    throw new AppError('Contact alredy exists');
+    throw new AppError('Contact alredy exists.', 409);
   }
 
   const createdContact = contactRepository.create({

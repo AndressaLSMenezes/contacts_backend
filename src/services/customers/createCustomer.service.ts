@@ -16,7 +16,7 @@ const createCustomerService = async (
   });
 
   if (verifyEmailExists) {
-    throw new AppError("Customer alredy exists", 400);
+    throw new AppError("Email already registered.", 409);
   }
 
   const createdCustomer = customerRepository.create(data);

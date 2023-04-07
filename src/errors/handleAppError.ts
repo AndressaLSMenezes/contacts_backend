@@ -10,14 +10,14 @@ const handleAppError = async (
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({ message: error.message });
   }
-  if (error.message.includes("invalid input syntax for type")) {
+  if (error.message.includes("Invalid input syntax for type")) {
     return res.status(400).json({ message: error.message });
   }
 
   console.log(error.message);
 
   return res.status(500).json({
-    message: "internal server error",
+    message: "internal server error.",
   });
 };
 
