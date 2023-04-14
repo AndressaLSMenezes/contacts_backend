@@ -11,6 +11,9 @@
   - [Iniciando](#34-iniciando)
 - [Autenticação](#4-autenticação)
 - [Endpoints](#5-endpoints)
+- [Repositório e Deploy do Front-end](#6-repositório-e-deploy-do-front-end)
+- [Futuras Implementações](#7-futuras-implementações)
+- [Pré-requisitos](#8-pré-requisitos)
 
 ---
 
@@ -93,14 +96,14 @@ Por enquanto, não foi implementada autenticação.
 - [Customers](#1-customers)
   - [POST - /customers](#11-criação-de-cliente)
   - [GET - /customers](#12-listando-clientes)
-  - [GET - /customers/:custumer_id](#13-listar-cliente-por-id)
-  - [PATCH - /customers/:custumer_id](#14-atualizar-cliente-por-id)
-  - [DELETE - /customers/:custumer_id](#15-delete-cliente-por-id)
+  - [GET - /customers/:customer_id](#13-listar-cliente-por-id)
+  - [PATCH - /customers/:customer_id](#14-atualizar-cliente-por-id)
+  - [DELETE - /customers/:customer_id](#15-delete-cliente-por-id)
 - [Contacts](#2-contacts)
   - [POST - /contacts](#21-criação-de-contatos)
   - [GET - /contact](#22-listando-contatos)
   - [GET - /contact/:contact_id](#23-listar-contato-por-id)
-  - [GET - /contact/customers/:custumer_id](#24-listar-contato-pelo-id-do-cliente)
+  - [GET - /contact/customers/:customer_id](#24-listar-contato-pelo-id-do-cliente)
   - [PATCH - /contact/:contact_id](#25-atualizar-contato-por-id)
   - [DELETE - /contact/:contact_id](#26-delete-contato-por-id)
 
@@ -811,3 +814,28 @@ Vazio
 | ------------------------- | ---------------------- |
 | 404 Not Found             | Contact not found.     |
 | 505 Internal Server Error | Internal Server Error. |
+
+
+## 6. Repositório e Deploy do Front-end
+
+[Link para o repositório do front-end](https://github.com/AndressaLSMenezes/contacts_frontend)
+
+[Link para o deploy do front-end](https://contacts-frontend-sand.vercel.app/)
+
+---
+
+## 7. Futuras Implementações
+
+- Criar rota de login utilizando a biblioteca jsonwebtoken para gerar o token no login
+- Adicionar criptografia de senha utilizando a biblioteca bcrypt
+
+---
+
+## 8. Pré-requisitos
+
+Antes de começar, é necessário ter instalado em sua máquina:
+
+- NodeJS >= 14.15.0
+- Yarn >= 1.22.10
+- PostgreSQL >= 12.0
+
